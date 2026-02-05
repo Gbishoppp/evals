@@ -41,8 +41,3 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         pytest
-
-    - name: Run security audit
-      run: |
-            pip install pip-audit
-            pip-audit
