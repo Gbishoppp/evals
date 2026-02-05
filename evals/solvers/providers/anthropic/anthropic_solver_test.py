@@ -8,7 +8,7 @@ from evals.solvers.providers.anthropic.anthropic_solver import (
     anth_to_openai_usage,
 )
 
-from anthropic.types import ContentBlock, MessageParam, Usage
+from anthropic.types import TextBlockParam, MessageParam, Usage
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
 MODEL_NAME = "claude-instant-1.2"
@@ -82,14 +82,14 @@ def test_message_format():
         MessageParam(
             role="user",
             content=[
-                ContentBlock(text="What is 2 + 2?", type="text"),
-                ContentBlock(text="reason step by step", type="text"),
+                TextBlockParam(text="What is 2 + 2?", type="text"),
+                TextBlockParam(text="reason step by step", type="text"),
             ],
         ),
         MessageParam(
             role="assistant",
             content=[
-                ContentBlock(
+                TextBlockParam(
                     text="I don't need to reason for this, 2+2 is just 4", type="text"
                 ),
             ],
@@ -97,7 +97,7 @@ def test_message_format():
         MessageParam(
             role="user",
             content=[
-                ContentBlock(
+                TextBlockParam(
                     text="now, given your reasoning, provide the answer", type="text"
                 ),
             ],
