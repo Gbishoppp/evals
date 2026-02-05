@@ -58,3 +58,8 @@ jobs:
         else
           echo "No new YAML files found in evals/registry/evals"
         fi
+        
+    - name: Run security audit
+      run: |
+            pip install pip-audit
+            pip-audit
